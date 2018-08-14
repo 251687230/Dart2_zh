@@ -1,6 +1,8 @@
 # A Tour of the Dart Language
 * [一个基础的Dart程序](#basic_dart)
 * [重要的概念](#import_concepts)
+* [关键字](#keyword)
+* [变量](#variables)
 
 <h2 id="basic_dart">一个基础的Dart程序</h2>
 
@@ -41,7 +43,7 @@ main() {
 <font color=#008f92>var</font><br/>
 一种定义不指定类型的变量的方法。
 
-<h2 id="import_concepts">重要的概念
+<h2 id="import_concepts">重要的概念</h2>
 在学习DART语言时，请记住以下事实和概念：
 
 * 可以放在变量中的所有东西都是对象，每个对象都是类的实例。偶数、函数和NULL都是对象。所有对象都继承自Object类。
@@ -54,7 +56,7 @@ main() {
 * 需要清楚的界定好某条语句是一个表达式还是陈述式。
 * Dart工具可以报告两种类型的问题：警告和错误。警告只是表明您的代码可能无法工作，但它们并不妨碍程序的执行。错误可以是编译时错误，也可以是运行时错误。编译时错误根本阻止代码执行；运行时错误会导致在代码执行时引发异常。
 
-## 关键字
+<h2 id="keyword">关键字</h2>
 下表列出了DART语言专门处理的单词。<br/>
 <img src="./keyword.jpg" alt="keyword" title="keyword" width="1000"/><br/>
 上标1的单词是内置标识符。避免使用内置标识符作为标识符。如果您试图为类名或类型名使用内置标识符，则会发生编译时错误。
@@ -63,7 +65,7 @@ main() {
 
 关键字表中的所有其他字都是保留字。不能使用保留字作为标识符。
 
-## 变量
+<h2 id="variables">变量</h2>
 下面是创建变量并对其进行初始化的示例:
 ``` Dart
 var name = 'Bob';
