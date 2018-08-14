@@ -143,7 +143,7 @@ baz = [42]; // Error: Constant variables can't be assigned a value.
 
 有关使用const创建常量值的详细信息，请参阅 Lists, Maps, 和 Classes。
 
-<h2 id="buildin_type>内置类型</h2>
+<h2 id="buildin_type">内置类型</h2>
 
 DART语言特别支持以下类型：
 
@@ -155,4 +155,12 @@ DART语言特别支持以下类型：
 * runes (for expressing Unicode characters in a string)
 * symbols
 
-可以使用文本初始化这些特殊类型的任何对象。
+可以使用文本初始化这些特殊类型的任何对象。例如， ``` 'this is a string'``` 是一个字符串文本，而 ```true``` 是一个布尔文本。
+
+因为Dart中的每个变量都指向一个对象—— 一个类的实例 —— 您通常可以使用构造函数来初始化变量。有些内置类型有自己的构造函数。例如，您可以使用 ```Map()``` 构造函数来创建映射。
+
+<h2 id="numbers">数字</h2>
+Dart Numbers 有两种:
+
+```int```
+整数值不大于64位，具体取决于平台。在Dart虚拟机上, 取值范围为 -2<sup>63</sup>~2<sup>63</sup>-1。使用JavaScript Numbers编译为JavaScript的DART，允许值为-2<sup>53</sup>~2<sup>53</sup>-1。
