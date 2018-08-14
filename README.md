@@ -3,6 +3,9 @@
 * [重要的概念](#import_concepts)
 * [关键字](#keyword)
 * [变量](#variables)
+  * [默认值](#default_value)
+  * [Final and const](#final_const)
+* [内置类型](#buildin_type)
 
 <h2 id="basic_dart">一个基础的Dart程序</h2>
 
@@ -44,6 +47,7 @@ main() {
 一种定义不指定类型的变量的方法。
 
 <h2 id="import_concepts">重要的概念</h2>
+
 在学习DART语言时，请记住以下事实和概念：
 
 * 可以放在变量中的所有东西都是对象，每个对象都是类的实例。偶数、函数和NULL都是对象。所有对象都继承自Object类。
@@ -57,6 +61,7 @@ main() {
 * Dart工具可以报告两种类型的问题：警告和错误。警告只是表明您的代码可能无法工作，但它们并不妨碍程序的执行。错误可以是编译时错误，也可以是运行时错误。编译时错误根本阻止代码执行；运行时错误会导致在代码执行时引发异常。
 
 <h2 id="keyword">关键字</h2>
+
 下表列出了DART语言专门处理的单词。<br/>
 <img src="./keyword.jpg" alt="keyword" title="keyword" width="1000"/><br/>
 上标1的单词是内置标识符。避免使用内置标识符作为标识符。如果您试图为类名或类型名使用内置标识符，则会发生编译时错误。
@@ -66,6 +71,7 @@ main() {
 关键字表中的所有其他字都是保留字。不能使用保留字作为标识符。
 
 <h2 id="variables">变量</h2>
+
 下面是创建变量并对其进行初始化的示例:
 ``` Dart
 var name = 'Bob';
@@ -85,7 +91,8 @@ String name = 'Bob';
 
 > Note:本页遵循《编码风格指南》，对局部变量使用var而不是类型注释。
 
-## 默认值
+<h2 id="default_value">默认值</h2>
+
 未初始化变量的初始值为null。即使是数值类型的变量，初始值也是null，因为数字就像Dart中的其他东西一样,也是对象。
 ``` Dart
 int lineCount;
@@ -94,7 +101,8 @@ assert(lineCount == null);
 
 在生产代码中 ```assert()``` 的调用会被忽略。在开发过程中，除非条件为真，否则 ```assert(condition)``` 。有关详细信息，请参见断言。
 
-## Final and const
+<h2 id="final_const">Final and const</h2>
+
 如果您不希望更改变量，请使用Final或const来取代var，或者除此之外额外再加上一个类型声明。一个final变量只能被赋值一次。常量变量是编译时常数.(常量变量是隐式的final变量。)一个final的顶级变量或类变量在第一次使用时被初始化。
 
 >Note:实例变量可以是final，但不能是const。
@@ -135,7 +143,8 @@ baz = [42]; // Error: Constant variables can't be assigned a value.
 
 有关使用const创建常量值的详细信息，请参阅 Lists, Maps, 和 Classes。
 
-## 内置类型
+<h2 id="buildin_type>内置类型</h2>
+
 DART语言特别支持以下类型：
 
 * numbers
