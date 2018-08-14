@@ -1,5 +1,9 @@
 # A Tour of the Dart Language
-## 一个基础的Dart程序
+* [一个基础的Dart程序](#basic_dart)
+* [重要的概念](#import_concepts)
+
+<h2 id="basic_dart">一个基础的Dart程序</h2>
+
 以下的代码使用了许多Dart最基础的特性：
 ``` Dart
 // Define a function.
@@ -37,7 +41,7 @@ main() {
 <font color=#008f92>var</font><br/>
 一种定义不指定类型的变量的方法。
 
-## 重要的概念
+<h2 id="import_concepts">重要的概念
 在学习DART语言时，请记住以下事实和概念：
 
 * 可以放在变量中的所有东西都是对象，每个对象都是类的实例。偶数、函数和NULL都是对象。所有对象都继承自Object类。
