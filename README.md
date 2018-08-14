@@ -6,6 +6,7 @@
   * [默认值](#default_value)
   * [Final and const](#final_const)
 * [内置类型](#buildin_type)
+  * [数字](#numbers)
 
 <h2 id="basic_dart">一个基础的Dart程序</h2>
 
@@ -108,36 +109,36 @@ assert(lineCount == null);
 >Note:实例变量可以是final，但不能是const。
 
 下面是创建和设置一个final变量的示例：
-``` Dart2
+``` Dart
 final name = 'Bob'; // Without a type annotation
 final String nickname = 'Bobby';
 ```
 
 你无法更改一个final变量的值：
-``` Dart2
+``` Dart
 name = 'Alice'; // Error: a final variable can only be set once.
 ```
 
 对希望成为编译时常量的变量使用const。如果const变量是class级别，则将其标记为static const。在声明变量时，将值设置为编译时常量，如数字或字符串文字、常量变量或常量算术运算的结果：
-``` Dart2
+``` Dart
 const bar = 1000000; // Unit of pressure (dynes/cm2)
 const double atm = 1.01325 * bar; // Standard atmosphere
 ```
 
 const关键字不仅仅用于声明常量变量。您还可以使用它来创建常量值，以及声明创建常量值的构造函数。任何变量都可以有一个常量值。
-``` Dart2
+``` Dart
 var foo = const [];
 final bar = const [];
 const baz = []; // Equivalent to `const []`
 ```
 
 您可以在const声明的初始化表达式中省略const，就像上面的Baz一样。有关详细信息，请参见不要重复使用const。您可以更改不是final、不是const的值，即使它之前有一个常量值：
-``` Dart2
+``` Dart
 foo = [1, 2, 3]; // Was const []
 ```
 
 无法更改常量变量的值：
-``` Dart2
+``` Dart
 baz = [42]; // Error: Constant variables can't be assigned a value.
 ```
 
@@ -162,5 +163,42 @@ DART语言特别支持以下类型：
 <h2 id="numbers">数字</h2>
 Dart Numbers 有两种:
 
-```int```
+```int```<br/>
 整数值不大于64位，具体取决于平台。在Dart虚拟机上, 取值范围为 -2<sup>63</sup>~2<sup>63</sup>-1。使用JavaScript Numbers编译为JavaScript的DART，允许值为-2<sup>53</sup>~2<sup>53</sup>-1。
+
+```double```<br/>
+64位(双精度)浮点数，符合IEEE 754标准。
+
+```int```和```double```都是```num```的子类型。num类型包括基本运算符，例如+、-、/和*，您还可以在其中找到```abs()```、```cill()```和```log()```等方法。(像 >> 这样的位运算符是在int类中定义的。)如果num及其子类型没有您要寻找的内容，则<a href="https://api.dartlang.org/stable/2.0.0/dart-math/dart-math-library.html">dart:math<a/>库可能会包含。
+
+Integers是没有小数点的数字。下面是一些定义整数文本的示例：
+``` Dart
+int x = 1;
+int hex = 0xDEADBEEF;
+```
+
+如果一个数字包含小数点，那么它就是double。下面是一些定义double文本的示例：
+``` Dart
+double y = 1.1;
+double exponents = 1.42e5;
+```
+
+下面是如何将字符串转换为数字的方法，反之亦然：
+``` Dart
+// String -> int
+var one = int.parse('1');
+assert(one == 1);
+
+// String -> double
+var onePointOne = double.parse('1.1');
+assert(onePointOne == 1.1);
+
+// int -> String
+String oneAsString = 1.toString();
+assert(oneAsString == '1');
+
+// double -> String
+String piAsString = 3.14159.toStringAsFixed(2);
+assert(piAsString == '3.14');
+```
+
