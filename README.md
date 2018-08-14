@@ -65,3 +65,79 @@ main() {
 var name = 'Bob';
 ```
 
+变量存储引用。名为name的变量包含一个带有“Bob”值的字符串对象的引用。
+
+name变量的类型推断为String，但您可以通过指定它来更改该类型。如果对象不限于单个类型，请按照设计准则指定对象或动态类型。
+``` Dart
+dynamic name = 'Bob';
+```
+
+另一种选择是显式声明可能推断的类型：
+``` Dart
+String name = 'Bob';
+```
+
+> Note:本页遵循《编码风格指南》，对局部变量使用var而不是类型注释。
+
+## 默认值
+未初始化变量的初始值为null。即使是数值类型的变量，初始值也是null，因为数字就像Dart中的其他东西一样,也是对象。
+``` Dart
+int lineCount;
+assert(lineCount == null);
+```
+
+在生产代码中 ```assert()``` 的调用会被忽略。在开发过程中，除非条件为真，否则 ```assert(condition)``` 。有关详细信息，请参见断言。
+
+## Final and const
+如果您不希望更改变量，请使用Final或const来取代var，或者除此之外额外再加上一个类型声明。一个final变量只能被赋值一次。常量变量是编译时常数.(常量变量是隐式的final变量。)一个final的顶级变量或类变量在第一次使用时被初始化。
+
+>Note:实例变量可以是final，但不能是const。
+
+下面是创建和设置一个final变量的示例：
+``` Dart2
+final name = 'Bob'; // Without a type annotation
+final String nickname = 'Bobby';
+```
+
+你无法更改一个final变量的值：
+``` Dart2
+name = 'Alice'; // Error: a final variable can only be set once.
+```
+
+对希望成为编译时常量的变量使用const。如果const变量是class级别，则将其标记为static const。在声明变量时，将值设置为编译时常量，如数字或字符串文字、常量变量或常量算术运算的结果：
+``` Dart2
+const bar = 1000000; // Unit of pressure (dynes/cm2)
+const double atm = 1.01325 * bar; // Standard atmosphere
+```
+
+const关键字不仅仅用于声明常量变量。您还可以使用它来创建常量值，以及声明创建常量值的构造函数。任何变量都可以有一个常量值。
+``` Dart2
+var foo = const [];
+final bar = const [];
+const baz = []; // Equivalent to `const []`
+```
+
+您可以在const声明的初始化表达式中省略const，就像上面的Baz一样。有关详细信息，请参见不要重复使用const。您可以更改不是final、不是const的值，即使它之前有一个常量值：
+``` Dart2
+foo = [1, 2, 3]; // Was const []
+```
+
+无法更改常量变量的值：
+``` Dart2
+baz = [42]; // Error: Constant variables can't be assigned a value.
+```
+
+有关使用const创建常量值的详细信息，请参阅 Lists, Maps, 和 Classes。
+
+## 内置类型
+DART语言特别支持以下类型：
+
+* numbers
+* strings
+* booleans
+* lists (also known as arrays)
+* maps
+* runes (for expressing Unicode characters in a string)
+* symbols
+
+可以使用文本初始化这些特殊类型的任何对象。
