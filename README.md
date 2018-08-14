@@ -52,7 +52,7 @@ main() {
 
 ## 关键字
 下表列出了DART语言专门处理的单词。<br/>
-<img src="./keyword.jpg" alt="keyword" title="keyword" width="700"/><br/>
+<img src="./keyword.jpg" alt="keyword" title="keyword" width="1000"/><br/>
 上标1的单词是内置标识符。避免使用内置标识符作为标识符。如果您试图为类名或类型名使用内置标识符，则会发生编译时错误。
 
 带有上标2的两个字是较新的、有限的保留字，它们与在DART 1.0版本之后添加的异步支持有关。您不能在任何用异步、异步*或同步*标记的函数体中使用async, await或 yield作为标识符。有关更多信息，请参见异步支持。
