@@ -7,6 +7,8 @@
   * [Final and const](#final_const)
 * [内置类型](#buildin_type)
   * [数字](#numbers)
+  * [字符串](#strings)
+  * [列表](#lists)
 
 <h2 id="basic_dart">一个基础的Dart程序</h2>
 
@@ -201,4 +203,128 @@ assert(oneAsString == '1');
 String piAsString = 3.14159.toStringAsFixed(2);
 assert(piAsString == '3.14');
 ```
+
+int类型支持传统的位移(<<，>>)，与(&)和或(|)运算符。例如：
+``` Dart
+assert((3 << 1) == 6); // 0011 << 1 == 0110
+assert((3 >> 1) == 1); // 0011 >> 1 == 0001
+assert((3 | 4) == 7); // 0011 | 0100 == 0111
+```
+
+数字是编译时的常量。许多算术表达式也是编译时的常量。它们的运算结果也是可以计算到数字的编译时常量。
+``` Dart
+const msPerSecond = 1000;
+const secondsUntilRetry = 5;
+const msUntilRetry = secondsUntilRetry * msPerSecond;
+```
+
+<h2 id="strings">字符串</h2>
+
+DART字符串是UTF-16编码的单元序列。可以使用单引号或双引号创建字符串：
+``` Dart
+var s1 = 'Single quotes work well for string literals.';
+var s2 = "Double quotes work just as well.";
+var s3 = 'It\'s easy to escape the string delimiter.';
+var s4 = "It's even easier to use the other delimiter.";
+```
+
+你可以通过使用```${expression}```将表达式的值嵌入字符串中。如果表达式是标识符，则可以省略{}。Dart可以调用对象的toString()方法获取与对象相对应的字符串。
+``` Dart
+var s = 'string interpolation';
+
+assert('Dart has $s, which is very handy.' ==
+    'Dart has string interpolation, ' +
+        'which is very handy.');
+assert('That deserves all caps. ' +
+        '${s.toUpperCase()} is very handy!' ==
+    'That deserves all caps. ' +
+        'STRING INTERPOLATION is very handy!');
+```
+
+>Note:==操作符可以测试两个对象是否相等。如果两个字符串包含相同的代码单元序列，则它们是相等的。
+
+你可以让字符串保持相邻或者使用+运算符来连接字符串：
+``` Dart
+ar s1 = 'String '
+    'concatenation'
+    " works even over line breaks.";
+assert(s1 ==
+    'String concatenation works even over '
+    'line breaks.');
+
+var s2 = 'The + operator ' + 'works, as well.';
+assert(s2 == 'The + operator works, as well.');
+```
+
+另一种创建多行字符串的方法：使用带有单引号或双引号的三元引号：
+``` Dart
+var s1 = '''
+You can create
+multi-line strings like this one.
+''';
+
+var s2 = """This is also a
+multi-line string.""";
+```
+
+你可以通过添加前缀r创建一个"原始"的字符串:
+``` Dart
+var s = r'In a raw string, not even \n gets special treatment.'
+```
+
+如何在字符串中表示Unicode字符,请参考Runes获取详情。
+
+字符串文本是编译时常量，只要任何插值表达式的值是null或数字、字符串或布尔值,它都是一个编译时常量。
+
+``` Dart
+// These work in a const string.
+const aConstNum = 0;
+const aConstBool = true;
+const aConstString = 'a constant string';
+
+// These do NOT work in a const string.
+var aNum = 0;
+var aBool = true;
+var aString = 'a string';
+const aConstList = [1, 2, 3];
+
+const validConstString = '$aConstNum $aConstBool $aConstString';
+// const invalidConstString = '$aNum $aBool $aString $aConstList';
+```
+
+有关使用字符串的详细信息，请参阅字符串和正则表达式。
+
+<h2 id="booleans">布尔</h2>
+
+为了表示布尔值，DART有一个命名为bool的类型。只有两个对象具有bool类型：布尔文本true和false，它们都是编译时常量。
+
+DART的类型安全性意味着您不能使用以下代码```if(nonbooleanValue)```或```assert (nonbooleanValue)```。相反，需要显式地检查值，如下所示：
+```Dart
+// Check for an empty string.
+var fullName = '';
+assert(fullName.isEmpty);
+
+// Check for zero.
+var hitPoints = 0;
+assert(hitPoints <= 0);
+
+// Check for null.
+var unicorn;
+assert(unicorn == null);
+
+// Check for NaN.
+var iMeantToDoThis = 0 / 0;
+assert(iMeantToDoThis.isNaN);
+```
+
+<h2 id="lists">列表</h2>
+
+在几乎所有编程语言中，可能最常见的集合就是数组了，或者说是有序的对象组。在Dart中，数组是List对象，所以大多数人都叫它们列表。
+
+Dart list文本与JavaScript数组文本。下面是一个简单的Dart list：
+``` Dart
+var list = [1, 2, 3];
+```
+
+
 
