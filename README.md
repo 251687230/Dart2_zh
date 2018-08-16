@@ -328,7 +328,92 @@ var list = [1, 2, 3];
 
 >Note:分析器推断list具有类型List<int>。如果尝试向此列表添加非整数对象，分析器分析或程序运行时将引发错误。有关更多信息，请阅读类型推断。
 
+list使用零基索引，其中0是第一个元素的索引,list.length - 1是最后一个元素的索引。你可以得到一个列表的长度，并像在JavaScript中一样引用列表元素：
+``` Dart
+var list = [1, 2, 3];
+assert(list.length == 3);
+assert(list[1] == 2);
 
+list[1] = 1;
+assert(list[1] == 1);
+```
 
+要创建一个编译时常量的列表，请在list之前添加const：
+``` Dart
+var constantList = const [1, 2, 3];
+// constantList[1] = 1; // Uncommenting this causes an error.
+```
 
+list类型有许多方便的操作列表的方法。有关list的更多信息，请参阅Generics 和 Collections.。
+
+<h2 id="maps">映射</h2>
+一般来说，映射是关联键和值的对象。键和值都可以是任何类型的对象。每个键只出现一次，但是您可以多次使用相同的值。Dart通过map文本和map类型提供对map的支持。
+
+一下有一些简单的Dart map示例，通过map文本创建:
+``` Dart
+var gifts = {
+  // Key:    Value
+  'first': 'partridge',
+  'second': 'turtledoves',
+  'fifth': 'golden rings'
+};
+
+var nobleGases = {
+  2: 'helium',
+  10: 'neon',
+  18: 'argon',
+};
+```
+
+>Note:分析器推断，```gifts```拥有类型```Map<String, String>```，```noblegase```拥有类型Map<int, String>。如果您试图将错误类型的值添加到map中，那么解析或运行时就会出现错误。要了解更多信息，请阅读有关类型推断的内容。
+
+您可以使用Map构造器创建相同的对象:
+``` Dart
+var gifts = Map();
+gifts['first'] = 'partridge';
+gifts['second'] = 'turtledoves';
+gifts['fifth'] = 'golden rings';
+
+var nobleGases = Map();
+nobleGases[2] = 'helium';
+nobleGases[10] = 'neon';
+nobleGases[18] = 'argon';
+```
+
+注意：您可能期望看到```new Map()```而不是```Map()```。在Dart 2中，```new```关键字是可选的。有关详细信息，请参阅使用构造函数。
+
+在现有的Map中添加一个新的键-值对，就像在JavaScript中一样：
+``` Dart
+var gifts = {'first': 'partridge'};
+gifts['fourth'] = 'calling birds'; // Add a key-value pair
+```
+
+如果你查找一个不在map上的键，你会得到一个空值：
+``` Dart
+var gifts = {'first': 'partridge'};
+assert(gifts['fifth'] == null);
+```
+
+使用```.length```来获得map中键-值对的数量：
+``` Dart
+var gifts = {'first': 'partridge'};
+gifts['fourth'] = 'calling birds';
+assert(gifts.length == 2);
+```
+
+要创建一个编译时常量的map，在map文本之前添加const：
+``` Dart
+final constantMap = const {
+  2: 'helium',
+  10: 'neon',
+  18: 'argon',
+};
+
+// constantMap[2] = 'Helium'; // Uncommenting this causes an error.
+```
+
+有关map的更多信息，请参阅 Generics 和 Maps。
+
+<h2 id="runes">Runes</h2>
+在Dart中，runes是UTF-32码点（Code Point）的字符串。
 
