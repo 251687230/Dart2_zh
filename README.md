@@ -417,3 +417,6 @@ final constantMap = const {
 <h2 id="runes">Runes</h2>
 在Dart中，runes是UTF-32码点（Code Point）的字符串。
 
+Unicode为世界上所有书写系统中使用的每个字母、数字和符号定义了唯一的数字值。由于Dart字符串是UTF-16代码单元的序列，所以在字符串中表示32位Unicode值需要特殊的语法。
+
+通常表示Unicode编码点的方法是\uXXXX，其中XXXX是4位十六进制值。例如,字符(♥)的表示方式为```\u2665```。若要指定多于或少于4个十六进制数字，请将值置于花括号内。对于example,笑的emoji字符(😆)是```\u{1f600}```.
